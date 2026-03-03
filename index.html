@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palette Haven Art Supplies - Educational Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pastel-purple': '#C3B1E1', // Light lavender
+                        'pastel-pink': '#FFD1DC',  // Light pink
+                        'pastel-blue': '#B2F0E8',  // Light aqua
+                        'pastel-green': '#D4EDDA', // Light mint
+                        'pastel-yellow': '#FFFACD',// Light lemon chiffon
+                        'dark-text': '#333333',
+                        'light-text': '#666666',
+                    },
+                    fontFamily: {
+                        sans: ['"Open Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1517840901100-8179e98d4d7e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+        }
+        .brushstroke-bg {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,10 C20,2 40,18 60,10 C80,2 100,18 100,10 L100,20 L0,20 Z" fill="%23FFFACD"/></svg>');
+            background-repeat: repeat-x;
+            background-size: auto 20px;
+            background-position: bottom;
+        }
+        .gallery-item {
+            transition: transform 0.2s ease-in-out;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="font-sans text-dark-text bg-gray-50">
+
+    <!-- Header / Sticky Navigation Bar -->
+    <header class="bg-white/80 backdrop-blur-sm shadow-md fixed top-0 left-0 w-full z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-serif font-bold text-pastel-purple hover:text-pastel-pink transition-colors">Palette Haven</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors">Home</a>
+                <a href="#shop" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors">Shop</a>
+                <a href="#about" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors">About Us</a>
+                <a href="#gallery" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors">Gallery</a>
+                <a href="#contact" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors">Contact</a>
+                <a href="#faqs" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors">FAQs</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="hamburger-button" class="md:hidden focus:outline-none">
+                <svg class="w-8 h-8 text-dark-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white/90 backdrop-blur-sm shadow-lg py-4">
+            <div class="flex flex-col items-center space-y-4">
+                <a href="#home" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors mobile-menu-link">Home</a>
+                <a href="#shop" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors mobile-menu-link">Shop</a>
+                <a href="#about" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors mobile-menu-link">About Us</a>
+                <a href="#gallery" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors mobile-menu-link">Gallery</a>
+                <a href="#contact" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors mobile-menu-link">Contact</a>
+                <a href="#faqs" class="text-lg font-semibold text-dark-text hover:text-pastel-purple transition-colors mobile-menu-link">FAQs</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Home / Cover Page -->
+        <section id="home" class="hero-bg text-white py-24 md:py-32 flex flex-col items-center justify-center text-center relative">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <div class="relative z-10 p-6 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-serif font-bold mb-4 drop-shadow-lg">Unleash Your Creativity</h1>
+                <p class="text-xl md:text-2xl mb-8 font-light drop-shadow-md">Discover quality art supplies for every artist, from beginner to professional.</p>
+                <a href="#shop" class="inline-block bg-pastel-purple text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-pastel-pink transition-all duration-300">Browse Supplies</a>
+            </div>
+        </section>
+
+        <!-- Important Notice -->
+        <div class="bg-pastel-yellow text-dark-text p-4 text-center text-sm md:text-base font-semibold border-b border-pastel-pink">
+            <p>👋 <strong class="font-bold">Important Notice:</strong> This website is a fictional business created for educational and demonstration purposes only. It is not a real store.</p>
+        </div>
+
+        <!-- Featured Highlights -->
+        <section class="container mx-auto px-6 py-16 bg-white">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-12 text-pastel-purple">Why Choose Palette Haven?</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 bg-pastel-green/20 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-5xl mb-4">🎨</div>
+                    <h3 class="text-xl font-semibold mb-2">Quality Art Materials</h3>
+                    <p class="text-light-text">Hand-picked supplies to inspire your best work.</p>
+                </div>
+                <div class="p-6 bg-pastel-blue/20 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-5xl mb-4">💰</div>
+                    <h3 class="text-xl font-semibold mb-2">Student-Friendly Prices</h3>
+                    <p class="text-light-text">Affordable options for every budget.</p>
+                </div>
+                <div class="p-6 bg-pastel-pink/20 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-5xl mb-4">✨</div>
+                    <h3 class="text-xl font-semibold mb-2">Creative Inspiration</h3>
+                    <p class="text-light-text">Fuel your artistic journey, beginner or pro.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shop Page -->
+        <section id="shop" class="container mx-auto px-6 py-16">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-12 text-pastel-purple">Our Art Supplies</h2>
+
+            <!-- Categories -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button data-category="all" class="category-button px-6 py-2 rounded-full bg-pastel-purple text-white font-semibold hover:bg-pastel-pink transition-colors duration-300 shadow-md">All</button>
+                <button data-category="paints" class="category-button px-6 py-2 rounded-full bg-gray-200 text-dark-text font-semibold hover:bg-pastel-blue/50 transition-colors duration-300 shadow-md">🎨 Paints</button>
+                <button data-category="drawing" class="category-button px-6 py-2 rounded-full bg-gray-200 text-dark-text font-semibold hover:bg-pastel-green/50 transition-colors duration-300 shadow-md">✏️ Drawing Tools</button>
+                <button data-category="sketchbooks" class="category-button px-6 py-2 rounded-full bg-gray-200 text-dark-text font-semibold hover:bg-pastel-yellow/50 transition-colors duration-300 shadow-md">📒 Sketchbooks & Paper</button>
+                <button data-category="brushes" class="category-button px-6 py-2 rounded-full bg-gray-200 text-dark-text font-semibold hover:bg-pastel-purple/50 transition-colors duration-300 shadow-md">🖌️ Brushes & Tools</button>
+                <button data-category="kits" class="category-button px-6 py-2 rounded-full bg-gray-200 text-dark-text font-semibold hover:bg-pastel-pink/50 transition-colors duration-300 shadow-md">🧰 Art Kits</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+                <!-- Paints -->
+                <div class="product-category-section product-card" data-category="paints">
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="https://images.unsplash.com/photo-1595085375990-2550186196b0?auto=format&fit=crop&w=200&h=150&q=80" alt="Acrylic Paint Set" class="w-full h-36 object-cover mb-4 rounded-md">
+                        <h3 class="text-lg font-semibold mb-1">Acrylic Paint Set</h3>
+                        <p class="text-sm text-light-text mb-2">Vibrant colors for versatile painting.</p>
+                        <p class="text-xl font-bold text-pastel-purple mb-3">$24.99</p>
+                        <button class="add-to-cart-btn bg-pastel-blue text-white px-5 py-2 rounded-full hover:bg-pastel-green transition-colors duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-category-section product-card" data-category="paints">
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="https://images.unsplash.com/photo-1577051419790-2b13b715a396?auto=format&fit=crop&w=200&h=150&q=80" alt="Watercolor Paint Set" class="w-full h-36 object-cover mb-4 rounded-md">
+                        <h3 class="text-lg font-semibold mb-1">Watercolor Set</h3>
+                        <p class="text-sm text-light-text mb-2">Portable pans for delicate washes.</p>
+                        <p class="text-xl font-bold text-pastel-purple mb-3">$18.50</p>
+                        <button class="add-to-cart-btn bg-pastel-blue text-white px-5 py-2 rounded-full hover:bg-pastel-green transition-colors duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-category-section product-card" data-category="paints">
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="https://images.unsplash.com/photo-1579783900882-c0d3ce7ddc24?auto=format&fit=crop&w=200&h=150&q=80" alt="Oil Paint Tubes" class="w-full h-36 object-cover mb-4 rounded-md">
+                        <h3 class="text-lg font-semibold mb-1">Oil Paint Tubes</h3>
+                        <p class="text-sm text-light-text mb-2">Rich pigments for classic techniques.</p>
+                        <p class="text-xl font-bold text-pastel-purple mb-3">$35.00</p>
+                        <button class="add-to-cart-btn bg-pastel-blue text-white px-5 py-2 rounded-full hover:bg-pastel-green transition-colors duration-300">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Drawing Tools -->
+                <div class="product-category-section product-card" data-category="drawing">
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="https://images.unsplash.com/photo-1618331320257-270570b2075b?auto=format&fit=crop&w=200&h=150&q=80" alt="Sketch Pencil Set" class="w-full h-36 object-cover mb-4 rounded-md">
+                        <h3 class="text-lg font-semibold mb-1">Sketch Pencil Set</h3>
+                        <p class="text-sm text-light-text mb-2">Variety of hardness for detailed work.</p>
+                        <p class="text-xl font-bold text-pastel-purple mb-3">$12.99</p>
+                        <button class="add-to-cart-btn bg-pastel-blue text-white px-5 py-2 rounded-full hover:bg-pastel-green transition-colors duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-category-section product-card" data-category="drawing">
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="https://images.unsplash.com/photo-1582234032150-137996362507?auto=format&fit=crop&w=200&h=150&q=80" alt="Charcoal Drawing Set" class="w-full h-36 object-cover mb-4 rounded-md">
+                        <h3 class="text-lg font-semibold mb-1">Charcoal Drawing Set</h3>
+                        <p class="text-sm text-light-text mb-2">For expressive shading and lines.</p>
+                        <p class="text-xl font-bold text-pastel-purple mb-3">$9.95</p>
+                        <button class="add-to-cart-btn bg-pastel-blue text-white px-5 py-2 rounded-full hover:bg-pastel-green transition-colors duration-300">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Sketchbooks & Paper -->
+                <div class="product-category-section product-card" data-category="sketchbooks">
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="https://images.unsplash.com/photo-1558591710-4c1a9a659819?auto=format&fit=crop&w=200&h=150&q=80" alt="Hardcover Sketchbook" class="w-full h-36 object-cover mb-4 rounded-md">
+                        <h3 class="text-lg font-semibold mb-1">Hardcover Sketchbook</h3>
+                        <p class="text-sm text-light-text mb-2">Durable paper for all dry media.</p>
+                        <p class="text-xl font-bold text-pastel-purple mb-3">$15.00</p>
+                        <button class="add-to-cart-btn bg-pastel-blue text-white px-5 py-2 rounded-full hover:bg-pastel-green transition-colors duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-category-section product-card" data-category="sketchbooks">
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="https://images.unsplash.com/photo-1620912170381-80a24f0c78a9?auto=format&fit=crop&w=200&h=150&q=80" alt="Watercolor Paper Pad" class="w-full h-36 object-cover mb-4 rounded-md">
+                        <h3 class="text-lg font-semibold mb-1">Watercolor Paper Pad</h3>
+                        <p class="text-sm text-light-text mb-2">Heavyweight, cold press paper.</p>
+                        <p class="text-xl font-bold text-pastel-purple mb-3">$19.99</p>
+                        <button class="add-to-cart-btn bg-pastel-blue text-white px-5 py-2 rounded-full hover:bg-pastel-green transition-colors duration-300">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Brushes & Tools -->
+                <div class="product-category-section product-card" data-category="brushes">
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="https://images.unsplash.com/photo-1559223607-42c2225368a5?auto=format&fit=crop&w=200&h=150&q=80" alt="Artist Brush Set" class="w-full h-36 object-cover mb-4 rounded-md">
+                        <h3 class="text-lg font-semibold mb-1">Artist Brush Set</h3>
+                        <p class="text-sm text-light-text mb-2">Assorted shapes for various mediums.</p>
+                        <p class="text-xl font-bold text-pastel-purple mb-3">$29.00</p>
+                        <button class="add-to-cart-btn bg-pastel-blue text-white px-5 py-2 rounded-full hover:bg-pastel-green transition-colors duration-300">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Art Kits -->
+                <div class="product-category-section product-card" data-category="kits">
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                        <img src="https://images.unsplash.com/photo-1557672809-b4b3c9b74f32?auto=format&fit=crop&w=200&h=150&q=80" alt="Beginner Art Kit" class="w-full h-36 object-cover mb-4 rounded-md">
+                        <h3 class="text-lg font-semibold mb-1">Beginner Art Kit</h3>
+                        <p class="text-sm text-light-text mb-2">Everything you need to start creating.</p>
+                        <p class="text-xl font-bold text-pastel-purple mb-3">$45.00</p>
+                        <button class="add-to-cart-btn bg-pastel-blue text-white px-5 py-2 rounded-full hover:bg-pastel-green transition-colors duration-300">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us -->
+        <section id="about" class="container mx-auto px-6 py-16 bg-pastel-yellow/20 rounded-lg shadow-inner my-12">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-8 text-pastel-purple">About Palette Haven</h2>
+            <div class="max-w-3xl mx-auto text-lg leading-relaxed text-light-text">
+                <p class="mb-4">Welcome to Palette Haven, a fictional art supplies business created purely for educational and demonstration purposes. Our mission, in this simulated environment, is to inspire creativity and support artistic expression for everyone, from budding students to seasoned professionals.</p>
+                <p class="mb-4">We believe that art should be accessible and enjoyable. That's why, if we were a real business, we would be dedicated to sourcing high-quality materials at student-friendly prices, fostering a community where artists can grow and explore their potential.</p>
+                <p class="font-bold text-dark-text">Please remember: Palette Haven is not a real store and does not sell products. This website is a project for learning web development and design.</p>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section id="gallery" class="container mx-auto px-6 py-16">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-12 text-pastel-purple">Our Inspiration Gallery</h2>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <img src="https://via.placeholder.com/400x300/C3B1E1/FFFFFF?text=Artwork+1" alt="Abstract Painting" class="gallery-item w-full h-auto rounded-lg shadow-md cursor-pointer object-cover" loading="lazy">
+                <img src="https://via.placeholder.com/400x300/FFD1DC/FFFFFF?text=Artwork+2" alt="Landscape Sketch" class="gallery-item w-full h-auto rounded-lg shadow-md cursor-pointer object-cover" loading="lazy">
+                <img src="https://via.placeholder.com/400x300/B2F0E8/FFFFFF?text=Artwork+3" alt="Portrait Drawing" class="gallery-item w-full h-auto rounded-lg shadow-md cursor-pointer object-cover" loading="lazy">
+                <img src="https://via.placeholder.com/400x300/D4EDDA/FFFFFF?text=Artwork+4" alt="Still Life" class="gallery-item w-full h-auto rounded-lg shadow-md cursor-pointer object-cover" loading="lazy">
+                <img src="https://via.placeholder.com/400x300/FFFACD/FFFFFF?text=Artwork+5" alt="Mixed Media" class="gallery-item w-full h-auto rounded-lg shadow-md cursor-pointer object-cover" loading="lazy">
+                <img src="https://via.placeholder.com/400x300/C3B1E1/FFFFFF?text=Artwork+6" alt="Watercolor Scene" class="gallery-item w-full h-auto rounded-lg shadow-md cursor-pointer object-cover" loading="lazy">
+                <img src="https://via.placeholder.com/400x300/FFD1DC/FFFFFF?text=Artwork+7" alt="Ink Drawing" class="gallery-item w-full h-auto rounded-lg shadow-md cursor-pointer object-cover" loading="lazy">
+                <img src="https://via.placeholder.com/400x300/B2F0E8/FFFFFF?text=Artwork+8" alt="Acrylic Floral" class="gallery-item w-full h-auto rounded-lg shadow-md cursor-pointer object-cover" loading="lazy">
+            </div>
+
+            <!-- Lightbox Modal -->
+            <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+                <div class="relative p-4">
+                    <button id="lightbox-close" class="absolute top-2 right-2 text-white text-3xl font-bold leading-none hover:text-gray-300">&times;</button>
+                    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-lg">
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="container mx-auto px-6 py-16 bg-pastel-green/20 rounded-lg shadow-inner my-12">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-12 text-pastel-purple">Get in Touch (Demo)</h2>
+            <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                <p class="text-center text-sm text-light-text mb-6">This contact form is for demonstration purposes only and does not send actual messages.</p>
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-dark-text mb-1">Name</label>
+                        <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-md focus:ring-pastel-purple focus:border-pastel-purple" placeholder="Your Name" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-dark-text mb-1">Email</label>
+                        <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-md focus:ring-pastel-purple focus:border-pastel-purple" placeholder="your.email@example.com" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-dark-text mb-1">Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full p-3 border border-gray-300 rounded-md focus:ring-pastel-purple focus:border-pastel-purple" placeholder="Your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-pastel-purple text-white px-6 py-3 rounded-md font-semibold hover:bg-pastel-pink transition-colors duration-300 shadow-md">Send Message (Demo)</button>
+                </form>
+                
+                <div class="mt-8 text-center">
+                    <p class="text-dark-text font-semibold">Fictional Contact Info:</p>
+                    <p class="text-light-text">Email: <a href="mailto:info@palettehaven.demo" class="text-pastel-blue hover:underline">info@palettehaven.demo</a></p>
+                    <p class="text-light-text">Phone: <a href="tel:+15551234567" class="text-pastel-blue hover:underline">(555) 123-4567</a></p>
+                    
+                    <div class="flex justify-center space-x-4 mt-6">
+                        <a href="#" aria-label="Facebook" class="text-pastel-purple hover:text-pastel-pink transition-colors"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.54 2 12.04c0 5.04 3.65 9.24 8.44 9.96v-7.04H7.9v-2.92h2.54V9.8c0-2.5 1.53-3.88 3.77-3.88 1.08 0 2.01.08 2.28.12v2.64h-1.57c-1.24 0-1.48.59-1.48 1.46v1.92h2.95l-.48 2.92h-2.47v7.04c4.79-.72 8.44-4.92 8.44-9.96 0-5.5-4.5-10-10-10z"/></svg></a>
+                        <a href="#" aria-label="Instagram" class="text-pastel-purple hover:text-pastel-pink transition-colors"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.899.422.422.682.82.899 1.382.166.422.36 1.057.415 2.227.059 1.266.071 1.646.071 4.85s-.012 3.584-.071 4.85c-.055 1.17-.249 1.805-.415 2.227-.217.562-.477.96-.899 1.382-.422.422-.682.82-.899 1.382-.166.422-.36 1.057-.415 2.227-.059 1.266-.071 1.646-.071 4.85s.012 3.584.071 4.85c.055-1.17.249-1.805.415-2.227.217-.562-.477-.96-.899-1.382-.422-.422-.682-.82-.899-1.382-.166-.422-.36-1.057-.415-2.227-.059-1.266-.071-1.646-.071-4.85s.012-3.584.071-4.85c.055-1.17.249-1.805.415-2.227.217-.562.477-.96.899-1.382.422-.422.682-.82.899-1.382.166-.422.36-1.057.415-2.227.059-1.266.071-1.646.071-4.85zm0-2.163c-3.259 0-3.667.014-4.947.072-1.23.056-2.01.244-2.72.521-.72.28-1.31.66-1.9.99-.59.33-1.1.75-1.55 1.2-.45.45-.87.96-1.2 1.55-.33.59-.71 1.18-.99 1.9-.27.71-.46 1.49-.52 2.72-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.056 1.23.244 2.01.521 2.72.28.72.66 1.31.99 1.9.33.59.75 1.1 1.2 1.55.45.45.96.87 1.55 1.2.59.33 1.18.71 1.9.99.71.27 1.49.46 2.72.52 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.23-.056 2.01-.244 2.72-.521.72-.28 1.31-.66 1.9-.99.59-.33 1.1-.75 1.55-1.2.45-.45.87-.96 1.2-1.55.33-.59.71-1.18.99-1.9.27-.71.46-1.49.52-2.72.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.056-1.23-.244-2.01-.521-2.72-.28-.72-.66-1.31-.99-1.9-.33-.59-.75-1.1-1.2-1.55-.45-.45-.96-.87-1.55-1.2-.59-.33-1.18-.71-1.9-.99-.71-.27-1.49-.46-2.72-.52-1.28-.058-1.688-.072-4.947-.072zm0 2.163c3.204 0 3.584.012 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.899.422.422.682.82.899 1.382.166.422.36 1.057.415 2.227.059 1.266.071 1.646.071 4.85s-.012 3.584-.071 4.85c-.055 1.17-.249 1.805-.415 2.227-.217.562-.477.96-.899 1.382-.422.422-.682.82-.899 1.382-.166.422-.36-1.057-.415-2.227-.059-1.266-.071-1.646-.071-4.85s.012-3.584.071-4.85c.055-1.17.249-1.805.415-2.227.217-.562.477-.96.899-1.382.422-.422.682-.82.899-1.382.166-.422.36-1.057.415-2.227.059-1.266.071-1.646.071-4.85zm0 3.627c-2.34 0-4.237 1.897-4.237 4.237s1.897 4.237 4.237 4.237 4.237-1.897 4.237-4.237-1.897-4.237-4.237-4.237zm0 6.91c-1.47 0-2.673-1.203-2.673-2.673s1.203-2.673 2.673-2.673 2.673 1.203 2.673 2.673-1.203 2.673-2.673 2.673zm5.725-8.694c-.58 0-1.05-.47-1.05-1.05s.47-1.05 1.05-1.05 1.05.47 1.05 1.05-.47 1.05-1.05 1.05z"/></svg></a>
+                        <a href="#" aria-label="Twitter" class="text-pastel-purple hover:text-pastel-pink transition-colors"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.594 0-6.49 2.906-6.49 6.49 0 .508.058 1.004.164 1.48-.538-.271-1.06-.583-1.555-.91-1.45-1.06-2.74-2.37-3.83-3.98-.36.61-.56 1.31-.56 2.06 0 1.19.605 2.24 1.52 2.85-.703-.02-1.36-.21-1.93-.53v.08c0 3.15 2.23 5.79 5.19 6.38-.52.14-1.07.22-1.64.22-.402 0-.79-.04-1.17-.11.82 2.56 3.2 4.43 6.04 4.48-2.22 1.74-5.02 2.78-8.07 2.78-.52 0-1.03-.03-1.53-.09 2.87 1.81 6.29 2.87 9.95 2.87 11.95 0 18.46-9.9 18.46-18.46 0-.28-.008-.56-.02-.84.97-.7 1.81-1.57 2.47-2.55z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Page -->
+        <section id="faqs" class="container mx-auto px-6 py-16">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-12 text-pastel-purple">Frequently Asked Questions</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <button class="faq-question w-full flex justify-between items-center text-left font-semibold text-lg text-dark-text focus:outline-none">
+                        <span>Do you ship nationwide?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer mt-4 text-light-text hidden">
+                        <p>As a fictional business, Palette Haven does not offer shipping. This website is a demonstration project.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <button class="faq-question w-full flex justify-between items-center text-left font-semibold text-lg text-dark-text focus:outline-none">
+                        <span>Are these products beginner-friendly?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer mt-4 text-light-text hidden">
+                        <p>In our conceptual design, Palette Haven would prioritize offering a wide range of products suitable for all skill levels, including many beginner-friendly options and kits.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <button class="faq-question w-full flex justify-between items-center text-left font-semibold text-lg text-dark-text focus:outline-none">
+                        <span>Do you offer student discounts?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer mt-4 text-light-text hidden">
+                        <p>If Palette Haven were a real business, we would absolutely offer student discounts to support the next generation of artists! This is part of our educational mission.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <button class="faq-question w-full flex justify-between items-center text-left font-semibold text-lg text-dark-text focus:outline-none">
+                        <span>Is this a real business?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer mt-4 text-light-text hidden">
+                        <p class="font-bold text-pastel-purple">No, Palette Haven Art Supplies is a fictional business. This website has been created solely for educational purposes and as a demonstration of web design and development skills. No products are sold, and no real transactions occur here.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-text text-white py-8 text-center">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2023 Palette Haven Art Supplies (Fictional Demo). All rights reserved.</p>
+            <p class="text-sm mt-2">This website is for educational purposes only and is not a real business.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - document.querySelector('header').offsetHeight;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Hamburger Menu Toggle
+        document.getElementById('hamburger-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Shop Category Filtering
+        document.querySelectorAll('.category-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.dataset.category;
+                document.querySelectorAll('.product-category-section').forEach(section => {
+                    if (category === 'all' || section.dataset.category === category) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+                // Update active state for buttons
+                document.querySelectorAll('.category-button').forEach(btn => {
+                    btn.classList.remove('bg-pastel-purple', 'text-white');
+                    btn.classList.add('bg-gray-200', 'text-dark-text');
+                });
+                this.classList.remove('bg-gray-200', 'text-dark-text');
+                this.classList.add('bg-pastel-purple', 'text-white');
+            });
+        });
+
+        // Initialize first category button as active
+        document.querySelector('.category-button[data-category="all"]').click();
+
+        // Add to Cart Demo
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Item added to cart (demo only)!');
+            });
+        });
+
+        // Contact Form Demo
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent (demo only)! Thank you for your interest.');
+            this.reset();
+        });
+
+        // Gallery Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                lightbox.classList.remove('hidden');
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+            });
+        });
+
+        lightboxClose.addEventListener('click', function() {
+            lightbox.classList.add('hidden');
+        });
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.classList.add('hidden');
+            }
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('svg');
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+    </script>
+</body>
+</html>
